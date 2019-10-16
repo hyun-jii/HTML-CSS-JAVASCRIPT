@@ -23,7 +23,7 @@
 7. hr - 수평선, 문서의 구분선  
    ex) `<hr>`  
 
-8. 주석태그 - html에서 주석 표현법
+8. 주석태그 - html에서 주석 표현법  
    ex) `<!-- 주석입니다 -->`  
    
 9. br - 줄바꿈, 문장의 줄바꿈  
@@ -38,4 +38,15 @@
           - border : 테이블의 선 두께 - cellpadding : 셀 안쪽 여백 - cellspacing : 셀과 셀 사이 간격 - width : 테이블의 넓이 - height : 테이블의 높이 - align : 테이블의 위치(가운데, 오른쪽, 왼쪽)  
           
     ex) `<table border="1" width="200" hegiht="300" align="center" cellpadding="10" cellspacing="10"`  
+    
+13. a - 인라인, a태그 안에 있는 href에 선언된 링크로 이동한다.  
+        ex) `<a href="Test001.html" target=`  
+    
+    
+14 ul - Unordered List 리스트를 작성하는 태그, 순서가 상관없다. <li>와 함께 쓰인다.  
+   ex) ` <ul>
+   <li>김밥</li>
+   <li>떡볶이</li>
+   <li>순대</li>
+         </ul>`
     
