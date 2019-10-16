@@ -1,6 +1,6 @@
 # HTML 태그 정리  
 
-1. head - 
+1. head - 머리말
    ex)`<head> </head>`  
    
 2. html - 문서의 범위를 설정한다.  
