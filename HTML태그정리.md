@@ -44,9 +44,9 @@
     
     
 14 ul - Unordered List 리스트를 작성하는 태그, 순서가 상관없다. <li>와 함께 쓰인다.  
-   ex) ` <ul>
+   ex) ```.html  <ul>
    <li>김밥</li>
    <li>떡볶이</li>
    <li>순대</li>
-         </ul>`
+         </ul>```
     
