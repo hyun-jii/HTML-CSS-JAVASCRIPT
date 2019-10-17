@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Test019.html</title>
+
+<style type="text/css">
+	
+	textarea {font-family: 나눔고딕코딩; font-weight: bold;}
+	
+</style>
+
+<script type="text/javascript">
+
+	function numberAdd()
+	{
+		document.getElementById("text").value="";
+		
+		var number = document.getElementById("input").value;
+		var result=0;
+		var str="";
+		
+		number = parseInt(number);
+		
+		if(number < 100)
+		{
+			alert("입력값은 100 이상만 가능합니다.");
+			return;
+		}
+		
+		for (var i = 1; i <= number; i++)
+		{
+			result+=i;
+			
+			if(i%10 == 0)
+			{
+				
+				//document.getElementById("content").innerHTML = "1~"+ i + " : " + result;
+				str += "1~"+ i + " : " + result +"\n";
+				
+			}
+			document.getElementById("text").value = str;
+			
+		}
+		
+	}
+
+</script>
+
+</head>
+<body>
+
+<!-- 
+	1부터 n 까지의 합을 계산하되
+	n은 100 이상만 허용하고
+	출력 시 10의 배수가 될 때 마다 중간 합을 출력할 수 있는
+	페이지를 구성한다.
+	
+	HTML, CSS, Javascript 활용
+	
+	페이지 레이아웃
+	-----------------------------------------------------------
+	
+	정수 입력(100이상) : [			]	-> input text
+	
+	<  결과  > <  취소  >				-> input button / button
+	
+	----------------------------------- -> textarea
+	1 ~ 10 : 55
+	1 ~ 20 : 210
+	1 ~ 30 : ...
+		:
+	1 ~ 100 : .....
+	-----------------------------------
+	
+	-----------------------------------------------------------
+
+ -->
+ 
+ <div>
+ 	<form>
+ 		<p>정수 입력(100이상) : <input type="text" id="input"></p>
+ 		
+ 		<input type="button" class="btn" value="결과" onclick="numberAdd()">
+ 		<input type="reset" class="btn" value="취소">
+ 		
+ 		<p>--------------------------------------------------------</p>
+ 		<textarea id="text" rows="10" cols="43" readonly="readonly">
+ 		</textarea>
+ 		<p>--------------------------------------------------------</p>
+ 	</form>
+ 
+ </div>
+
+</body>
+</html>

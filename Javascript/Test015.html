@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Test015.html</title>
+
+<style type="text/css">
+
+	input.box:focus
+	{
+		background-color: yellow;
+	}
+	input.btn:hover
+	{
+		color: orange;
+	}
+	input.box_su
+	{
+		width: 50px;
+	}
+
+</style>
+
+<script type="text/javascript">
+
+	function btnA_onclick()
+	{
+		var txt01 = document.getElementById("txtLeft");
+		var txt02 = document.getElementById("txtRight");
+		var leftStr = txt01.value;
+		
+		txt02.value = leftStr;
+	}
+	
+	function btnB_onclick()
+	{
+		var txt01 = document.getElementById("txtLeft");
+		var txt02 = document.getElementById("txtRight");
+		var rightStr = txt02.value;
+		
+		txt01.value = rightStr;
+		
+	}
+	function btnResult_onclick()
+	{
+		//테스트
+		//alert("test");
+		var txt01 = document.getElementById("txt_su1");
+		var txt02 = document.getElementById("txt_su2");
+		var txtResult = document.getElementById("txt_result");
+		
+		//txtResult.value = parseInt(txt01.value) + parseInt(txt02.value);
+		
+		txtResult.value = Number(txt01.value) + Number(txt02.value);
+		
+		
+	}
+	
+	
+
+</script>
+
+</head>
+<body>
+
+<div>
+	<hr>
+	<input type="text" class="box" id="txtLeft">
+	<input type="button" value="A버튼" class="btn" id="btnA" onclick="btnA_onclick()">
+	<input type="button" value="B버튼" class="btn" id="btnB" onclick="btnB_onclick()">
+	<input type="text" class="box" id="txtRight">
+	<hr>
+	<br><br>
+	
+	<input type="text" class="box_su" id="txt_su1">
+	+
+	<input type="text" class="box_su" id="txt_su2">
+	<input type="button" value="=" class ="btn" id="btn_result" onclick="btnResult_onclick()">
+	<input type="text" class="box_su" id="txt_result">
+	
+
+</div>
+
+<br><br>
+
+
+
+
+
+</body>
+</html>
