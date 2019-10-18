@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Test022.html</title>
+
+<style type="text/css">
+
+	 * { font-weight: bold; font-size: 20pt; text-align: center;}
+	.btn
+	{
+		background-color: pink;
+		border : 3px solid black;
+		width: 200px;
+		cursor: pointer;
+		border-radius: 10px 0px 10px 0px;
+		transition:all 0.9s, color 0.3;
+	}
+	
+	.btn:hover 
+	{ 
+		background: #f8585b;
+		box-shadow:200px 0 0 0 rgba(0,0,0,0.5) inset;
+
+	}
+	
+	input { width: 300px;}
+	
+	h1 { color: pink; font-weight: bold; background: black;}
+
+</style>
+
+<script type="text/javascript">
+
+	function addMember()
+	{
+		//alert("함수 호출 확인");
+		
+		/* var str = prompt("아무거나 입력하세요 :");
+		
+		alert("입력 내용 : " + str); */
+		
+		var n = 0;
+		var str = "";
+		var arr = new Array();
+		
+		do
+		{
+			
+			str = prompt("이름 전화번호(" + (n+1) + ") : ");
+			
+			if(str == "" || str == "." || str == " ")
+			{
+				break;
+			}
+			
+			arr[n] = str;
+			n++;
+			
+		} while (true);
+		
+		document.getElementById("txtCount").value = arr.length;
+		
+		document.getElementById("txtResult").value = "     이름      전화번호      \n";
+		document.getElementById("txtResult").value += "-------------------------------\n";
+		
+		for (var i = 0; i < arr.length; i++)
+		{
+			document.getElementById("txtResult").value += arr[i] + "\n";
+		}
+		
+	
+		
+		
+	}
+
+
+</script>
+
+</head>
+<body>
+
+<!-- 
+
+	여러 명의 이름과 전화번호를 입력받고
+	그 내용을 전체 출력하는 페이지를 구성한다.
+	
+	HTML, CSS, Javascript 를 활용한다.
+	※ prompt() 활용
+	
+	페이지 레이아웃
+	------------------------------------------------------------------
+	
+	< 회원 정보 입력 >
+	
+	전체 회원 수 : [	] 명
+	--------------------------------
+		이름		전화번호	
+		이은채		010-1111-1111
+		김동현		010-2222-2222
+	--------------------------------
+	
+	------------------------------------------------------------------
+
+ -->
+ 
+ 
+ <div>
+ 	<h1>자바스크립트 활용</h1>
+ 	<hr>
+ </div>
+ 
+ <div>
+ 	<form>
+ 		<input type="button" value="회원 정보 입력" class="btn" style="width: 200px " onclick="addMember()">
+ 		<br><br>
+ 		
+ 		전체 회원 수
+ 		<input type="text" id="txtCount" class="txt" style="width: 20px" readonly="readonly">
+ 		<br><br>
+ 		
+ 		<textarea rows="10" cols="30" id="txtResult" readonly="readonly"></textarea>
+ 	</form>
+ </div>
+
+</body>
+</html>

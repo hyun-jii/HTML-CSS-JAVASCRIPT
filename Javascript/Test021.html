@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Test021.html</title>
+
+<style type="text/css">
+
+	 * { font-weight: bold; font-size: 20pt; text-align: center;}
+	.btn
+	{
+		background-color: pink;
+		border : 3px solid black;
+		width: 200px;
+		cursor: pointer;
+		border-radius: 10px 0px 10px 0px;
+		transition:all 0.9s, color 0.3;
+	}
+	
+	.btn:hover 
+	{ 
+		background: #f8585b;
+		box-shadow:200px 0 0 0 rgba(0,0,0,0.5) inset;
+
+	}
+	
+	input { width: 300px;}
+	
+	h1 { color: pink; font-weight: bold; background: black;}
+
+</style>
+
+<script type="text/javascript">
+
+	
+	function mymax()
+	{
+		var str="";
+		str = document.getElementById("data").value;
+		
+		var list = str.split(" ");
+		
+		for (var i = 0; i < list.length; i++)
+		{
+			document.getElementById("print").value += list[i] + " ";
+		}
+
+		var max = Number(list[0]);
+		
+		for (var i = 0; i < list.length; i++)
+		{
+			if(Number(list[i]) > max)
+			{
+				max = Number(list[i]);
+			}
+		}
+		
+		document.getElementById("max").value = max; 
+	}
+
+</script>
+
+</head>
+<body>
+
+<!-- 
+
+	사용자로부터 임의의 정수를 임의의 개수 만큼 입력받고
+	그 수 중에서 가장 큰 수를 출력해줄 수 있는 페이지를 구성한다.
+	HTML, CSS, Javascript 를 활용한다.
+	
+	
+	페이지 레이아웃
+	---------------------------------------------------------------
+	
+	데이터 입력(공백 구분) : [ 				] -> text box
+	
+	< 결과 확인 >							  -> button
+	
+	전체 출력	[				]			  -> text box
+	가장 큰 수  [				]			  -> text box
+	
+
+	---------------------------------------------------------------
+	
+
+ -->
+ 
+ <div>
+ 	<h1>가장 큰 수 구하기</h1>
+ 	<hr>
+ 	<form>
+ 		<p>데이터 입력(공백 구분) : <input type="text" id="data"><br><br></p>
+ 		
+ 		<input type="button" class="btn" value="결과 확인" onclick="mymax()"><br><br>
+ 		
+ 		<p>전체 출력 <input type="text" id="print"><br><br></p>
+ 		<p>가장 큰 수 <input type="text" id="max"><br><br></p>
+ 	</form>
+ 	<hr>
+ </div>
+
+</body>
+</html>
