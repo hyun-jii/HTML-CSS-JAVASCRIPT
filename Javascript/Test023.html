@@ -1,138 +1,87 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Test023.html</title>
+    <meta charset="UTF-8">
+    <title>Test023.html</title>
 
-<style type="text/css">
+    <script type="text/javascript">
 
-	 * { font-weight: bold; font-size: 20pt; text-align: center;}
-	.btn
-	{
-		background-color: pink;
-		border : 3px solid black;
-		width: 200px;
-		cursor: pointer;
-		border-radius: 10px 0px 10px 0px;
-		transition:all 0.9s, color 0.3;
-	}
-	
-	.btn:hover 
-	{ 
-		background: #f8585b;
-		box-shadow:200px 0 0 0 rgba(0,0,0,0.5) inset;
+        function printGrade()
+        {
+            var n=0;
+            var str="";
+            var list = new Array(new Array(), new Array(), new Array(), new Array(), new Array(), new Array());
 
-	}
-	
-	input { width: 300px;}
-	
-	h1 { color: pink; font-weight: bold; background: black;}
+            do
+            {
+                str = prompt("이름 국어 수학 영어 : (" + (n+1) + ") :" );
 
-</style>
+                if(str == "" || str == ".")
+                {
+                    break;
+                }
+                var arr = str.split(" ");
 
-<script type="text/javascript">
+                list[0][n] = arr[0];
+                list[1][n] = arr[1];
+                list[2][n] = arr[2];
+                list[3][n] = arr[3];
 
-	function grade()
-	{
-		var n=0; var m=0;
-		var str="";
-		var tot=0;
-		var rank = 0;
-		var list = new Array();
-		list[0] = new Array();
-		list[1] = new Array();
-		list[2] = new Array();
-		list[3] = new Array();
-		
-		do
-		{
-			str = prompt("이름 국어 영어 수학 입력 (" + (n+1) + ") :" );
-			
-			if(str == "" || str == ".")
-			{
-				break;
-			}
-			
-			var arr = str.split(" ");
-				
-			list[n] = arr;
-			
-			tot = Number(list[n][1]) + Number(list[n][2]) + Number(list[n][3]);
-			
-			list[n][4] = tot;
-			list[n][5] =1;
-			
-			n++;
-						
-		} while (true);
-		
-	]
-		
-		
-		
-	
-		document.getElementById("txt").value = n;
-		document.getElementById("txtResult").value ="이름  국어  영어  수학  총점  등수\n";
-		
-		/* for (var i = 0; i < list.length; i++)
-		{
-			for (var j = 0; j < 5; j++)
-			{
-				document.getElementById("txtResult").value += list[i][j]+"  " ;
-			}
-			document.getElementById("txtReuslt") += "\n";
-	
-		} */
-		
-		for (var i = 0; i < list.length; i++)
-		{
-			document.getElementById("txtResult").value += list[i]+"\n" ;
-		}
-	}
+                list[4][n] = (Number(list[1][n]) + Number(list[2][n]) + Number(list[3][n])).toString();
+                list[5][n] = 1;
+
+                n++;
+
+            }while (true)
+
+            for (var i = 0; i < list[0].length ; i++)
+            {
+                for (var j = 0; j < list.length ; j++)
+                {
+                    if(i==j)
+                    {
+                        continue;
+                    }
+                    if(list[4][j] > list[4][i])
+                    {
+                        (list[5][i]++).toString();
+                    }
+                }
+
+            }
+
+            document.getElementById("count").value = list[0].length;
+            document.getElementById("txtResult").value = "이름  국어  영어  수학  총점  등수\n";
 
 
-</script>
+            for (var i = 0; i < list[0].length ; i++)
+            {
+                for (var j = 0; j < list.length ; j++)
+                {
+                    document.getElementById("txtResult").value += list[j][i] + " ";
 
+                }
+                document.getElementById("txtResult").value += "\n";
+            }
+
+        }
+    </script>
 
 </head>
 <body>
 
-<!-- 
+<div>
+    <h1>성적 정보 입력</h1>
+    <hr>
+    <form>
+        <input type="button" class="btn" value="성적정보입력" onclick="printGrade()"><br>
 
-	prompt() 를 활용하여
-	여러 명의 성적을 입력받고, 등수를 부여하여 
-	리스트를 출력하는 페이지를 구성한다.
-	
-	HTML, CSS, Javascript 를 활용한다.
-	
-	페이지 레이아웃
-	----------------------------------------------------------
-	
-	< 성적 정보 입력 > →→→→→→→→→→→→→→→→→→→ prompt()
-															  이름 국어 영어 수학(1) :
-															  
-    전체 인원 수  : [   ]
-    ---------------------------------------------															  
-	이름	국어	영어	수학	총점	등수
-	박지혜 	 90		80		70		xxx		1등		
-	백호진 	 80		70		60		xxx		2등		
-	정광현 	 70		60		50		xxx		3등		
-
-    ---------------------------------------------															  
-	
-	----------------------------------------------------------
- -->
- 
- <div>
- 	<form>
- 		<input type="button" class="btn" value="성적 정보 입력" onclick="grade()"><br>
- 		
- 		전체 인원 수 : <input type="text" id="txt" style="width: 50px"><br>
- 		-----------------------------------------------------------------<br>
- 		<textarea rows="10" cols="50" id="txtResult" readonly="readonly"></textarea><br>
- 		-----------------------------------------------------------------<br>
- 	</form>
- </div>
+        전체 인원 수<input type="text" id="count"><br>
+        -----------------------------------------------<br>
+        <textarea rows="10" cols="50" id="txtResult"></textarea><br>
+        -----------------------------------------------
+    </form>
+</div>
 
 </body>
 </html>
