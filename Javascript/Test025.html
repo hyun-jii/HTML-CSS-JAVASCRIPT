@@ -1,156 +1,138 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Test025.html</title>
+    <meta charset="UTF-8">
+    <title>Test025.html</title>
 
-<style type="text/css">
+    <style type="text/css">
 
-	 * { font-weight: bold; font-size: 20pt; text-align: center;}
-	.btn
-	{
-		background-color: pink;
-		border : 3px solid black;
-		width: 200px;
-		cursor: pointer;
-		border-radius: 10px 0px 10px 0px;
-		transition:all 0.9s, color 0.3;
-	}
-	
-	.btn:hover 
-	{ 
-		background: #f8585b;
-		box-shadow:200px 0 0 0 rgba(0,0,0,0.5) inset;
+        * { font-weight: bold; font-family: "맑은 고딕"; text-align: center;}
+        input { border-radius: 5px;}
+        input:focus { background-color: bisque;}
+        #btn
+        {
+            background-color: coral;
+            color: azure;
+            border-radius: 5px;
+            width: 150px; height: 30px;
+        }
 
-	}
-	
-	input { width: 300px;}
-	
-	h1 { color: pink; font-weight: bold; background: black;}
+        table { margin: auto;}
 
-</style>
+    </style>
 
-<script type="text/javascript">
+    <script type="text/javascript">
 
-	function actionCalendar()
-	{
-		var year = Number(document.getElementById("txtYear").value);
-		var month = Number(document.getElementById("txtMonth").value);
-		
-		var totnalsu = 0;
-		var nalsu = 0;
-		//var yoil=0;
+        function calcCalendar()
+        {
+            var year = Number(document.getElementById("year").value);
+            var month = Number(document.getElementById("month").value);
+            var m = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 
-		var m = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
-		
-		totnalsu = (year-1)*365 + parseInt((year-1)/4) - parseInt((year-1)/100) + parseInt((year-1)/400);
-		
-		//alert(nalsu);
-		
-		//해당년의 1월 1일부터 해당년 해당월의 1일 까지의 총 날수
-		for (var i = 0; i < month-1; i++)
-		{
-			if(year/4 == 0 && year/400 == 0 && year/100 != 0)
-			{
-				nalsu += m[i] +1;
-			}
-			else
-			{
-				nalsu += m[i];
-			}
-		}
-		nalsu = nalsu+1;
-		
-		
-		var day = (nalsu+totnalsu)%7;
-		
-		
-		var tableNode = document.getElementById("calendar");
-		
-		var trNode = document.createElement("tr");
-		
-		var count=0;
-		
-		
-		for (var i = 0; i < day; i++)
-		{
-			trNode.appendChild(createTdNode(" "));
-			count++;
-		}
-		
-		for (var i = 1; i <= m[month-1]; i++)
-		{
-			
-			trNode.appendChild(createTdNode(i));
-			count++
-			
-			if(count%7 == 0)
-			{
-				tableNode.appendChild(trNode);
-				var trNode = document.createElement("tr");
-			}
-			
-		}
-		
-		tableNode.appendChild(trNode);
-		
-	}
-	
-	function createTdNode(val)
-	{
-		var textNode = document.createTextNode(val);
-		var tdNode = document.createElement("td");
-		
-		tdNode.appendChild(textNode);
-		
-		return tdNode;
-	}
+            //1년 1월 1일부터 입력받은 해당년도의 전년도 12월 31일까지의 날수
+            var nal = (year-1)*365 + Math.floor((year-1)/4) - Math.floor((year-1)/100) + Math.floor((year-1)/400);
+
+            //해당 년도 해당월 1일까지의 날수
+            for (var i = 0; i < month-1 ; i++)
+            {
+                if( Math.floor(year%4) == 0 && Math.floor(year%100) != 0 || Math.floor(year%400) == 0)
+                {
+                    m[1] ++;
+                    nal +=  Number(m[i]);
+                }
+                else
+                {
+                    nal += Number(m[i]);
+                }
+            }
+            nal++;
+
+            //입력한 년도와 입력한 월의 1일의 요일 산출
+            var day = nal%7;
+
+            var lastDay = m[month-1];
+
+            if(month == 2 && Math.floor(year%4) == 0 && Math.floor(year%100) != 0 || Math.floor(year%400) == 0)
+            {
+                lastDay = 29;
+            }
+
+            //alert(lastDay);
+
+            var tableNode = document.getElementById("calendar");
+            var trNode = document.createElement("tr");
+
+            //1일 이전의 날 공백 찍기
+            for (var i = 0; i < day ; i++)
+            {
+                trNode.appendChild(tdNode(" "));
+            }
+
+            // 날짜 찍기
+            var i = 1;
+            for (i = 1; i <= lastDay ; i++)
+            {
+                trNode.appendChild(tdNode(i));
+
+                if((i+day)%7 == 0)
+                {
+                    tableNode.appendChild(trNode);
+                    var trNode = document.createElement("tr");
+                }
+            }
+
+            if(((i-1)+day)%7 != 0)
+            {
+                for (var j = 0; j < 7-(((i-1)+day)%7); j++)
+                {
+                    trNode.appendChild(tdNode(" "));
+                }
+            }
+
+            tableNode.appendChild(trNode);
+        }
+
+        function tdNode(val)
+        {
+            var textNode = document.createTextNode(val);
+            var tdNode = document.createElement("td");
+
+            tdNode.appendChild(textNode);
+
+            return tdNode;
+        }
 
 
-</script>
-
+    </script>
 
 </head>
 <body>
 
-<!-- 
-	만년달력 페이지를 구성한다.
-	HTML, CSS, Javascript 를 활용한다.
-	테이블 태그의 동적 생성 구문을 활용한다.
-	
-	1단계, 1년 1월 1일 부터... 전년도 12월 31일 까지의 총 날짜 수 구함.
-	2단계, 해당년 1월 1일 부터... 해당년 해당월 1일 까지의 총 날짜 수 구함.
-	3단계, 해당년 해당월의 첫 날(1일)의 요일 구함.
-	4단계, 해당년 해당월의 마지막 날짜 구함 (28일 29일 30일 31일)
-	5단계, 해당년 해당월 기준 달력 구성
-
- -->
-
 <div>
-	<h1>테이블 동적 생성으로 만년달력 그리기</h1>
+    <h1>만년 달력 그리기</h1>
+    <hr>
+    <form>
+        <input type="text" id="year">년
+        <input type="text" id="month">월 <br><br>
+
+        <input type="button" id="btn" value="만년달력 생성" onclick="calcCalendar()"><br><br>
+
+        <table border="1" id="calendar" >
+            <tr>
+                <th>일</th>
+                <th>월</th>
+                <th>화</th>
+                <th>수</th>
+                <th>목</th>
+                <th>금</th>
+                <th>토</th>
+            </tr>
+        </table>
+
+    </form>
 </div>
 
-<div>
-	<form>
-		<input type="text" id="txtYear" class="txt" style="width: 67px">년
-		<input type="text" id="txtMonth" class="txt" style="width: 67px">월
-		<br><br>
-		<button type="button" class="btn" style="width: 300px" onclick="actionCalendar()">만년달력 그리기</button>
-		
-		<br><br>
-		<table border="1" id="calendar">
-			<tr>
-				<th>일</th>
-				<th>월</th>
-				<th>화</th>
-				<th>수</th>
-				<th>목</th>
-				<th>금</th>
-				<th>토</th>
-			</tr>
-		</table>
-	</form>
-</div>
+
 
 </body>
 </html>
