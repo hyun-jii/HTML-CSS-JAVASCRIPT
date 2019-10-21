@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Test026.html</title>
+
+<script type="text/javascript">
+
+	function startGame()
+	{
+		var input = Number(document.getElementById("txt").value);
+		var nansu = parseInt((Math.random()*3))+1; 
+		var list = ["가위", "바위", "보"];
+		
+		//alert(nansu);
+		
+		if(input == nansu)
+		{
+			
+			document.getElementById("result").value = "사용자 : " + list[input-1] + " 컴퓨터 :" + list[nansu-1]
+			+ "-> 비겼습니다.";
+		}
+		else if(input%3 == (nansu+2)%3)
+		{
+			document.getElementById("result").value = "사용자 : " + list[input-1] + " 컴퓨터 :" + list[nansu-1]
+			+ "-> 컴퓨터가 이겼습니다.";
+		}
+		else
+		{
+			document.getElementById("result").value = "사용자 : " + list[input-1] + " 컴퓨터 :" + list[nansu-1]
+			+ "-> 사용자가 이겼습니다.";
+		}
+		
+	}
+
+</script>
+
+</head>
+<body>
+
+<!-- 
+	가위 바위 보 게임을 구성한다.
+	HTML, CSS, Javascript 를 활용한다.
+	자바스크립트 난수 발생 함수를 찾아 활용한다.
+	
+	페이지 레이아웃
+	--------------------------------------------------------------------
+	입력(1. 가위, 2. 바위, 3. 보) : [		]  <게임 결과 확인>
+	
+	[ 사용자 : 바위  컴퓨터 : 보  -> 컴퓨터가 이겼습니다.		]
+	---------------------------------------------------------------------
+
+ -->
+
+<div>
+	<h1>자바스크립트 난수 발생</h1>
+	<hr>
+</div>
+
+<div>
+	<form>
+		입력(1. 가위, 2.바위, 3. 보) ; <input type="text" id="txt" >
+		<input type="button" class="btn" value="게임 결과 확인" onclick="startGame()"><br>
+		<input type="text" id="result" readonly="readonly" style="width: 400px">
+		
+	</form>
+</div>
+
+</body>
+</html>
