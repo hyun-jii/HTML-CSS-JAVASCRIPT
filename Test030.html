@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Test030.html</title>
+
+<style type="text/css">
+	* { font-family: 맑은 고딕; font-weight: bold; color: #334433;}
+	.btn { width: 100px; height: 40px; font-size: 20px;}
+	.btn:hover { color: orange;}
+
+</style>
+
+<script type="text/javascript">
+
+	function choiceSize(val)
+	{
+		var radioObj = document.getElementsByName("radioGroup");
+		var size=0;
+		
+		for (var i = 0; i < radioObj.length; i++)
+		{
+			if(radioObj[i].checked)
+			{
+				size = Number(radioObj[i].value);
+			}
+		}
+		
+		var checkObj = document.getElementsByName("checkGroup");
+		var count=0;
+		var msg="";
+		
+		for (var i = 0; i < checkObj.length; i++)
+		{
+			
+			if(checkObj[i].checked)
+			{
+				
+				count++;
+				
+				if(count > size)
+				{
+					alert("개수 초과입니다.");
+				
+					document.getElementById(val.id).checked = false;
+					
+					break;
+				}
+				
+				msg += checkObj[i].value + " "; 
+			}
+		}
+	}
+	
+	function order(size, count)
+	{
+		if(size == count)
+		{
+			alert("주문완료");
+		}
+		else if(count < size)
+		{
+			alert("더 골라주세요");
+		}
+	}
+	
+	
+
+</script>
+
+
+
+
+</head>
+<body>
+
+<div>
+	<h1>자바스크립트 활용</h1>
+	<hr>
+</div>
+
+<div>
+	<h2>아이스크림 주문</h2>
+	
+	<form id="myform">
+		------ 사이즈 선택 -------<br>
+		<input type="radio" name="radioGroup" value="1" id="a"><label for="a">싱글(1)</label><br>
+		<input type="radio" name="radioGroup" value="2" id="b"><label for="b">더블(2)</label><br>
+		<input type="radio" name="radioGroup" value="3" id="c"><label for="c">파인트(3)</label><br>
+		<input type="radio" name="radioGroup" value="4" id="d"><label for="d">쿼터(4)</label><br>
+		<input type="radio" name="radioGroup" value="6" id="e"><label for="e">패밀리(6)</label><br>
+		<input type="radio" name="radioGroup" value="8" id="f"><label for="f">하프갤런(8)</label><br>
+		
+		<br>
+		------ 종류 선택 ---------<br>
+		<input type="checkbox" name="checkGroup" value="엄마" id="aa" onclick="choiceSize(this)"><label for="aa" o>엄마는 외계인</label>
+		<input type="checkbox" name="checkGroup" value="봉봉" id="bb" onclick="choiceSize(this)"><label for="bb">아몬드 봉봉</label>
+		<input type="checkbox" name="checkGroup" value="민트" id="cc" onclick="choiceSize(this)"><label for="cc">민트 초코칩</label>
+		<input type="checkbox" name="checkGroup" value="아몬" id="dd" onclick="choiceSize(this)"><label for="dd">피스타치오 아몬드</label>
+		<br>
+		<input type="checkbox" name="checkGroup" value="뉴욕" id="ee" onclick="choiceSize(this)"><label for="ee">뉴욕치즈케이크</label>
+		<input type="checkbox" name="checkGroup" value="아빠" id="ff" onclick="choiceSize(this)"><label for="ff">아빠는 딸바봉</label>
+		<input type="checkbox" name="checkGroup" value="체리" id="gg" onclick="choiceSize(this)"><label for="gg">체리쥬빌레</label>
+		<input type="checkbox" name="checkGroup" value="슈팅" id="hh" onclick="choiceSize(this)"><label for="hh">슈팅스타</label>
+		
+		<br><br>
+		
+		<button type="button" class="btn" onclick="order()">주문</button>
+	</form>
+</div>
+
+</body>
+</html>
