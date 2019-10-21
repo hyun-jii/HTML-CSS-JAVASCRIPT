@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Test032_1.html</title>
+
+<script type="text/javascript">
+
+	function actionAddr(addr)
+	{
+		//alert("함수호출확인");
+		window.opener.document.getElementById("addr1").value = addr;
+		
+		// IE 용
+		//window.opener.document.getElemnetById("txt1").innerText = addr;  --(과거)
+		
+		window.opener.document.getElementById("txt1").innerHTML = addr;
+		
+		window.close();
+	}
+
+</script>
+
+</head>
+<body>
+
+<div>
+	<form>
+		주소검색<input><input type="button" value="검색"><br><br>
+		<a href ="javascript:actionAddr('서울 마포구 서교로 1가')">서울 마포구 서교로 1가 (1~110번지)</a><br>
+		<a href ="">서울 마포구 서교로 2가 (111~180번지)</a><br>
+		<a href ="">서울 마포구 서교로 3가 (181~220번지)</a><br>
+		<a href = "">서울 마포구 서교로 4가 (221~264번지)</a><br>
+		<a href = "">서울 마포구 서교로 5가 (265~301번지)</a><br>
+	</form>
+</div>
+
+</body>
+</html>
